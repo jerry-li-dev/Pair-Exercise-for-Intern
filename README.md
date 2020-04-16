@@ -1,4 +1,4 @@
-# Pair-Exercise-for-Intern
+# Pairing Exercise - Intern
 
 For this exercise, you will pair with a technical writer to edit the comments in the Java file that produce the documentation for the Anypoint Connector for WebSockets. 
 
