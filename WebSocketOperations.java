@@ -81,10 +81,10 @@ public class WebSocketOperations {
   /**
    * Sends the given {@code content} through the given {@code socket}
    *
-   * @param socketId            the id of the socket through which data is to be sent
-   * @param content             the content to be sent
+   * @param socketId            the socket ID used to send data
+   * @param content             the content you will send
    * @param fluxCapacitor       the acting flux capacitor
-   * @param callback            completion callback
+   * @param callback            the completion callback
    * @param retryPolicyTemplate the reconnection policy
    */
   @Throws(DefaultErrorProvider.class)
@@ -132,18 +132,17 @@ public class WebSocketOperations {
   }
 
   /**
-   * Sends the given {@code content} to all the active WebSockets that match the {@code path}, {@code socketType} and
-   * {@code groups} criteria. In the case of the path, the base path configured in the config will not be considered as you
-   * may be targeting both inbound and outbound sockets.
+   * Sends the given {@code content} to all of the active WebSockets that match the {@code path}, {@code socketType} and
+   * {@code groups} criteria. Since you may be targeting both inbound and outbound sockets, the base path configured in the configuration isn't considered.
    * <p>
-   * The message will be send to all the matching sockets, even though it's possible that delivery to some of them fail.
-   * The operation will return a list of {@link BroadcastFailure} containing details of each of the failures. If none fail, an
-   * empty list is returned
+   * The message is sent to all of the matching sockets, even if it's possible that deliveries may fail.
+   * The operation will returns a list of {@link BroadcastFailure} containing details of each failure. If there are no failures, an
+   * empty list is returned. </p>
    *
-   * @param content             the content to be sent
+   * @param content             the content you will sent
    * @param fluxCapacitor       the acting {@link FluxCapacitor}
-   * @param path                the path of the sockets to be matched
-   * @param socketType          the type of sockets to be matched
+   * @param path                the path for each matched socket
+   * @param socketType          the type of each matched socket
    * @param groups              matches sockets that belong to any of these groups
    * @param completionCallback  the {@link CompletionCallback}
    * @param retryPolicyTemplate the reconnection policy
@@ -202,12 +201,15 @@ public class WebSocketOperations {
   }
 
   /**
-   * Opens a new outbound socket
+   * Opens a new outbound socket.
    *
-   * @param uriSettings              The path/url to connect to
+   * - Needs example code with how to call the operation
+   * - Needs example code of the output of this call, the returns code
+   *
+   * @param uriSettings              the path/url you will connect to
    * @param connectionRequestBuilder the request builder
-   * @param defaultGroups            the groups to which the socket should be initially subscribed
-   * @param config                   the connector's config
+   * @param defaultGroups            the groups that the socket is initially subscribed to
+   * @param config                   the connector configuration
    * @param fluxCapacitor            the acting flux capacitor
    * @param callback                 the completion callback
    */
@@ -258,9 +260,12 @@ public class WebSocketOperations {
   /**
    * Closes the {@code socket}
    *
-   * @param socketId      the id of the socket to be closed
+   * - Needs example code with how to call the operation
+   * - Needs example code of the output of this call, the returns code
+   *
+   * @param socketId      the ID for the socket you are closing
    * @param closeCode     the close code
-   * @param reason        the closing reason phrase
+   * @param reason        the reason for closing the socket
    * @param fluxCapacitor the acting flux capacitor
    * @param callback      the completion callback
    */
@@ -286,15 +291,18 @@ public class WebSocketOperations {
   /**
    * Subscribes the socket of the given {@code socketId} to the given {@code groups}.
    * <p>
-   * This operation can be used on the same socket as many times as necessary, each use being additive over previous ones.
+   * You can use this same socket as many times as necessary. Each use is additive over the previous uses.
+   </p>
    * <p>
-   * Repeated groups will be ignored.
+   * Repeated groups are ignored.
+   </p>
    * <p>
-   * Works for both types INBOUND and OUTBOUND sockets.
+   * You can use this socket for both INBOUND and OUTBOUND sockets.
+   </p>
    *
    * @param fluxCapacitor the {@link FluxCapacitor}
-   * @param socketId      the id of the socket to be subscribed
-   * @param groups        the groups that the socket will be subscribed to
+   * @param socketId      the socket ID you will subscribe
+   * @param groups        the groups that the socket is subscribed to
    */
   @Throws(GroupSubscriptionErrorProvider.class)
   public void subscribeGroups(@Connection FluxCapacitor fluxCapacitor,
